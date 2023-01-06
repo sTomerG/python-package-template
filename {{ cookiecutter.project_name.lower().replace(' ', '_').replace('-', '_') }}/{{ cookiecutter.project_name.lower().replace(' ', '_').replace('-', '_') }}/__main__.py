@@ -40,7 +40,4 @@ def main(
 
 
 if __name__ == "__main__":
-    try:
-        app()
-    except BaseException
-        logger.error("Error happened!", exc_info=True)
+    app()
