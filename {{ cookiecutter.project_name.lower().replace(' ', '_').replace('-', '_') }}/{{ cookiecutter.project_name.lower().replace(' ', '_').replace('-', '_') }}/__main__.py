@@ -10,6 +10,7 @@ from rich.console import Console
 from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} import version
 from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.example import hello
 
+from logger import logger
 
 class Color(str, Enum):
     white = "white"
@@ -64,4 +65,7 @@ def main(
 
 
 if __name__ == "__main__":
-    app()
+    try:
+        app()
+    except BaseException
+        logger.error("Error happened!", exc_info=True)
