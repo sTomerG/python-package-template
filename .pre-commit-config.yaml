@@ -17,7 +17,7 @@ repos:
       - id: pyupgrade
         name: pyupgrade
         entry: poetry run pyupgrade --py37-plus
-        exclude: ^{{ cookiecutter.project_name }}/
+        exclude: ^{{ cookiecutter.project_name.*/
         types: [python]
         language: system
 
@@ -26,7 +26,7 @@ repos:
       - id: isort
         name: isort
         entry: poetry run isort --settings-path pyproject.toml
-        exclude: ^{{ cookiecutter.project_name }}/
+        exclude: ^{{ cookiecutter.project_name.*/
         types: [python]
         language: system
 
@@ -35,6 +35,6 @@ repos:
       - id: black
         name: black
         entry: poetry run black --config pyproject.toml
-        exclude: ^{{ cookiecutter.project_name }}/
+        exclude: ^{{ cookiecutter.project_name.*/
         types: [python]
         language: system

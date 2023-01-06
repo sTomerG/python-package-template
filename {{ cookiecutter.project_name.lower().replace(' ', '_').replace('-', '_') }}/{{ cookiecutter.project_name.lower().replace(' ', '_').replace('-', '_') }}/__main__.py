@@ -1,23 +1,9 @@
 # type: ignore[attr-defined]
-from typing import Optional
-
-from enum import Enum
-from random import choice
-
 import typer
 from rich.console import Console
 
 from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} import version
-from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.example import hello
-
-
-class Color(str, Enum):
-    white = "white"
-    red = "red"
-    cyan = "cyan"
-    magenta = "magenta"
-    yellow = "yellow"
-    green = "green"
+from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.logger import logger
 
 
 app = typer.Typer(
@@ -35,17 +21,8 @@ def version_callback(print_version: bool) -> None:
         raise typer.Exit()
 
 
-@app.command(name="")
+@app.command()
 def main(
-    name: str = typer.Option(..., help="Person to greet."),
-    color: Optional[Color] = typer.Option(
-        None,
-        "-c",
-        "--color",
-        "--colour",
-        case_sensitive=False,
-        help="Color for print. If not specified then choice will be random.",
-    ),
     print_version: bool = typer.Option(
         None,
         "-v",
@@ -55,12 +32,11 @@ def main(
         help="Prints the version of the {{ cookiecutter.project_name }} package.",
     ),
 ) -> None:
-    """Print a greeting with a giving name."""
-    if color is None:
-        color = choice(list(Color))
-
-    greeting: str = hello(name)
-    console.print(f"[bold {color}]{greeting}[/]")
+ 
+    ...
+    
+    # last line
+    logger.info("Executed program without unexpected exception!")
 
 
 if __name__ == "__main__":
